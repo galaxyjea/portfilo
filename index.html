@@ -2,25 +2,43 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="referrer" content="no-referrer">
+    <title>作品集</title>
     <link rel="stylesheet" href="./css/style.css">
+    <style>
+      /* 让网页没有任何多余的白边和滚动条 */
+      html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background-color: #000;
+      }
+      #it5w {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+      }
+      #i6m3, #i2ohj {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
   </head>
   
   <body id="it5w">
     <header class="header-banner" id="i35g"></header>
     <div class="gjs-row" id="i6m3">
       <div class="gjs-cell" id="i2ohj">
-        <iframe 
-          src="https://player.bilibili.com/player.html?bvid=BV1Kq4y167v4&page=1&high_quality=1&danmaku=0&autoplay=1&muted=1" 
-          width="100%" 
-          height="100%" 
-          scrolling="no" 
-          border="0" 
-          frameborder="no" 
-          framespacing="0" 
-          allowfullscreen="true" 
-          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;">
-        </iframe>
+        <video 
+          id="ic4kn" 
+          src="bg.mp4" 
+          autoplay 
+          loop 
+          muted 
+          playsinline 
+          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
+        </video>
       </div>
     </div>
   </body>
