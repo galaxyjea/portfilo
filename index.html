@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Director Visual Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        body { background: #000; color: #fff; margin: 0; font-family: sans-serif; }
+        .text-stroke { -webkit-text-stroke: 1px rgba(255,255,255,0.6); color: transparent; }
+        .masonry-grid { column-count: 1; column-gap: 1.5rem; }
+        @media (min-width: 768px) { .masonry-grid { column-count: 3; } }
+        .masonry-item { break-inside: avoid; margin-bottom: 1.5rem; transition: 0.3s; }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useState } = React;
+        const INITIAL_DATA = [
+            { id: 1, type: 'ue5', title: "UE5重量级作品A", cat: "Cinematic", img: "https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?w=800", url: "https://assets.mixkit.co/videos/preview/mixkit-neon-lights-in-the-city-at-night-4214-large.mp4" },
+            { id: 2, type: 'ecommerce', title: "电商瀑布流作品B", cat: "Product", img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800", url: "https://assets.mixkit.co/videos/preview/mixkit-set-of-lights-in-a-video-studio-13761-large.mp4" },
+            { id: 3, type: 'ecommerce', title: "垂直排版作品C", cat: "Mobile", img: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800", url: "https://assets.mixkit.co/videos/preview/mixkit-beautiful-woman-with-red-lips-and-smokey-eyes-macro-4268-large.mp4" }
+        ];
+
+        function App() {
+            const [active, setActive] = useState(null);
+            return (
+                <div className="p-8 lg:p-20">
+                    <header className="mb-20">
+                        <h1 className="text-6xl md:text-9xl font-black uppercase tracking-tighter">Visual<br/><span className="text-stroke">WORKS.</span></h1>
+                        <p className="mt-6 text-neutral-500 text-xl">UE5 作品集 & 电商视觉瀑布流</p>
+                    </header>
+
+                    <div className="masonry-grid">
+                        {INITIAL_DATA.map(p => (
+                            <div key={p.id} onClick={() => setActive(p)} className="masonry-item group cursor-pointer relative rounded-xl overflow-hidden bg-neutral-900">
+                                <img src={p.img} className="w-full grayscale group-hover:grayscale-0 transition-all duration-700" />
+                                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity p-6 flex flex-col justify-end">
+                                    <p className="text-yellow-500 text-xs font-bold mb-1">{p.cat}</p>
+                                    <h3 className="font-bold text-lg">{p.title}</h3>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                    {active && (
+                        <div className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4" onClick={() => setActive(null)}>
+                            <div className="w-full max-w-5xl aspect-video relative bg-black shadow-2xl border border-white/10">
+                                <video src={active.url} controls autoPlay className="w-full h-full" onClick={e => e.stopPropagation()} />
+                                <button className="absolute -top-12 right-0 text-white text-4xl">&times;</button>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            );
+        }
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+</body>
+</html>
