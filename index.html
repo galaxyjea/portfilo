@@ -1,9 +1,101 @@
 <!doctype html>
-        <html lang="en">
-          <head>
-            <meta charset="utf-8">
-            <link rel="stylesheet" href="./css/style.css">
-          </head>
-          <body><body id="it5w"><meta charset="utf-8"/><title>作品集</title><link rel="stylesheet" href="./css/style.css"/><header id="i35g" class="header-banner"></header><div id="i6m3" class="gjs-row"><div id="i2ohj" class="gjs-cell"><video allowfullscreen="allowfullscreen" id="ic4kn" src="bg.mp4" autoplay loop muted playsinline="" controls>
-        </video><div id="ice6a">HOME</div><div id="i88pf">ABOUT ME</div></div></div></body></body>
-        </html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Portfolio</title>
+    <style>
+      /* 1. 全局解封：允许网页向下滚动，但隐藏左右死角的大拉条 */
+      html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        background-color: #000;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      }
+      html {
+        overflow-x: hidden; /* 锁死横向，允许纵向滚动 */
+      }
+
+      /* 2. 第一屏外壳（Hero区）：牢牢定死在第一屏，高100%视窗 */
+      #hero-section {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden; /* 确保视频多出来的部分不会撑大网页 */
+      }
+
+      /* 3. 背景视频：绝对定位，铺满第一屏 */
+      #bg-video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 1; /* 放在最底层 */
+        pointer-events: none;
+      }
+
+      /* 4. Reraner 同款悬浮文字样式 */
+      .brand-title {
+        position: absolute;
+        bottom: 8%;       /* 距离第一屏底部 8%，高级留白的关键 */
+        left: 5%;         /* 距离左边 5% */
+        z-index: 10;      /* 拔高图层，确保压在视频上面 */
+        color: #ffffff;
+      }
+
+      /* 名字样式 */
+      .brand-title h1 {
+        margin: 0;
+        font-size: 48px;  /* 字体大小 */
+        font-weight: 500; /* 字重，不要太粗，高端局都偏细 */
+        letter-spacing: 1px; /* 字间距拉开一点，更有呼吸感 */
+      }
+
+      /* 职业标签样式 */
+      .brand-title p {
+        margin: 10px 0 0 0;
+        font-size: 18px;
+        color: #a3a3a3;   /* 灰白色，拉开视觉主次 */
+        letter-spacing: 2px;
+        text-transform: uppercase; /* 强制大写 */
+      }
+
+      /* 5. 测试占位区：用来测试“随着滚轮滚掉”的效果 */
+      .content-grid-test {
+        width: 100vw;
+        height: 120vh; /* 故意撑高，让你有得滚 */
+        background: linear-gradient(to bottom, #000000, #111111);
+        padding: 80px 5%;
+        box-sizing: border-box;
+      }
+      .content-grid-test h2 {
+        color: #fff;
+        font-size: 32px;
+        border-bottom: 1px solid #222;
+        padding-bottom: 20px;
+      }
+    </style>
+  </head>
+  
+  <body>
+
+    <div id="hero-section">
+      
+      <video id="bg-video" src="bg.mp4" autoplay loop muted playsinline></video>
+      
+      <div class="brand-title">
+        <h1>JI XINGHE</h1>
+        <p>Director | Digital Artist</p>
+      </div>
+
+    </div>
+
+    <div class="content-grid-test">
+      <h2>SELECTED WORKS / 作品选集</h2>
+      <p style="color: #444; margin-top: 40px;">（这里就是你接下来要在 GrapesJS 里拖入 2 Columns 或 3 Columns 放 UE5 封面和电商视频的地方...）</p>
+    </div>
+
+  </body>
+</html>
